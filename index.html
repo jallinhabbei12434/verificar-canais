@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificador de Números</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    .header {
+      background-color: #0B3558;
+      padding: 30px 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .header p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #cccccc;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #1E1E1E;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #d1d1d1;
+    }
+
+    .form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #FFD600;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .info-card {
+      background-color: #1E1E1E;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .info-card p {
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 999;
+      width: 80%;
+      text-align: center;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: #0B3558;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .enter-group {
+      margin-top: 15px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0B3558;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Bem-vindo ao<br> <span style="color: #FFD600">Verificador<br> de Números!</span></h1>
+    <p>Garantindo a segurança dos participantes da <br><strong>VIP - MUC C04</strong>.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="card">
+      <p>Infelizmente, algumas pessoas mal-intencionadas podem tentar se passar por membros da nossa equipe. Para sua segurança, criamos esta ferramenta de verificação que permite confirmar se você está falando com um número oficial do nosso time.<br><br>
+      Basta inserir o telefone no campo abaixo e verificar agora mesmo:</p>
+
+      <div class="form">
+        <input type="text" id="numero" placeholder="Número de telefone">
+        <button onclick="verificarNumero()">Verificar</button>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <p><span style="color:#00BFFF;">🔵 Como funciona?</span><br>
+      Nosso sistema permite que você confira qualquer número de WhatsApp que tenha entrado em contato com você. Assim, você pode ter certeza de que está falando com um dos nossos canais oficiais de atendimento. Basta digitar o número e conferir instantaneamente se ele pertence à nossa equipe. Simples, rápido e seguro!
+      </p>
+
+      <p><span style="color: #FFC0CB;">🎊 O que fazer se o número não for verificado?</span><br>
+      Caso o número que você verificou não esteja em nosso sistema, recomendamos que você não continue a conversa. Se quiser reportá-lo para a nossa equipe, entre em contato com o Suporte pelo WhatsApp.</p>
+
+      <a href="#" class="enter-group">Entrar no Grupo</a>
+    </div>
+
+  </div>
+
+  <div class="popup" id="popup">
+    <p>⚠ Este número foi escrito de forma incorreta ou não pertence aos canais oficiais da nossa equipe.</p>
+    <button onclick="fecharPopup()">OK</button>
+  </div>
+
+  <script>
+    const numerosOficiais = [
+      '5511912345678',
+      '5521998765432',
+      '5531987654321',
+      '5541976543210',
+      '5551965432109'
+    ];
+
+    function verificarNumero() {
+      const numero = document.getElementById('numero').value.replace(/\D/g, '');
+      if (!numerosOficiais.includes(numero)) {
+        document.getElementById('popup').style.display = 'block';
+      } else {
+        alert('✅ Número Oficial da nossa Equipe!');
+      }
+    }
+
+    function fecharPopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
